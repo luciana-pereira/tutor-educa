@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 import './App.css';
+import LoginForm from './components/Login/LoginForm';
+import LoginCreate from './components/Login/LoginCreate';
+import Dashboard from './pages/Dashboard';
+import Cadastro from './pages/Cadastro';
+import CadastroUser from './pages/CadastroUser';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginForm />} />
+            <Route path="/login/criar" element={<LoginCreate />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            {/* <Route path="/configuracoes" element={<Settings />} /> */}
+            <Route path="/cadastrouser" element={<CadastroUser />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }
