@@ -79,7 +79,7 @@ const LoginCreate = () => {
 		createUserWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 			const user = userCredential.user;
-			// console.log({ ...formData, type: userType })
+			console.log({ ...formData, type: userType })
 			
 			// Salvar informações adicionais do usuário regular no banco de dados Firestore
 			addDoc(collection(db, userType), { ...formData, type: userType });
@@ -188,7 +188,7 @@ const LoginCreate = () => {
 		<section className="form-container form-container-register">
 			<div className="effect"></div>
 			<ImgCreate />
-			<div className="form-content">
+			<div className="form-content-login-create">
 				{isNavigate && (
 					<Navigate to="/" replace={true} />
 				)}

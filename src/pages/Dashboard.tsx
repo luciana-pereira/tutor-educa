@@ -9,12 +9,20 @@ import LinearProgress from '@mui/material/LinearProgress';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import "./style.css";
 
 import "../components/Appointment/style.css";
 import Appointment from "../components/Appointment/Appointment";
+import {
+  useHMSActions,
+  useHMSStore,
+  selectIsConnectedToRoom
+} from "@100mslive/react-sdk";
+import Room from "../components/Room/Room";
+import JoinRoom from '../pages/JoinRoom';
+import fetchToken from "../services/fetchToken";
 // import PhysicalActivityChart from "../components/PhysicalActivityChart/PhysicalActivityChart";
 
 interface Appointment {
@@ -31,6 +39,14 @@ const Dashboard = () => {
   const [expandedAppointment, setExpandedAppointment] = useState<number | null>(null);
   const [userType, setUserType] = useState<string>('user');
   const [userData, setUserData] = useState<any>('');
+
+
+  const hmsActions = useHMSActions();
+  const isConnected = useHMSStore(selectIsConnectedToRoom);
+  // const handleRoom = async (userName: any) => {
+  //   const token = await fetchToken(userName);
+  //   hmsActions.join({ authToken: token, userName });
+  // };
   // console.log("userData", userData.fullname);
 
   // useEffect(() => {
@@ -108,6 +124,11 @@ const Dashboard = () => {
     });
   }, 1000);
 
+  document.getElementById("joinRoom")?.addEventListener("click", async (userName: any) => {
+    const token = await fetchToken(userName);
+    hmsActions.join({ authToken: token, userName });
+  });
+
   // console.log(userData);
 
   return (
@@ -127,10 +148,10 @@ const Dashboard = () => {
           {userData ?
             (userData?.type === 'tutor') ? (
               <p className="nameDashboard">
-                Olá, {(userData?.maleBiologicalGender) ? `Sr.${userData?.fullname}` : `Sra.${userData?.fullname}`}
+                Olá, {(userData?.maleBiologicalGender) ? `Sr.${userData?.name}` : `Sra.${userData?.name}`}
               </p>
             ) : (
-              <p className="nameDashboard">Olá, {userData?.fullname}</p>
+              <p className="nameDashboard">Olá, {userData?.name}</p>
             )
             : undefined}
           <div className="boxConteiner">
@@ -155,6 +176,9 @@ const Dashboard = () => {
                 value={40}
               />
             </Box>
+            {/* <Box>
+              <>{isConnected ? <Room /> : <JoinRoom /> }</>
+            </Box> */}
             <Box
               className="boxContent"
             >
