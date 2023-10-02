@@ -83,12 +83,13 @@ const LoginForm = () => {
         <section className="form-container">
             <div className="effect"></div>
             <ImgLogin />
-            <div className="form-content">
+            <div className="form-content-login">
                 {isNavigate && (
                     <Navigate to="dashboard" replace={true} />
                 )}
                 <div className="form">
-                    <h2 className="form-title">Olá, bem-vindo de volta!</h2>
+                    <h2 className="form-title">Tutor Educa</h2>
+                    <p>Olá, seja bem vindo de volta, realize o login para iniciar.</p>
                     <form className="form" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                         <Controller
                             name='email'

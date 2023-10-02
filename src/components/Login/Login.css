@@ -8,10 +8,9 @@
 
 .img-container > img {
     height: 70%;
-    width: 110%;
+    width: 80%;
     object-fit: cover;
     border-radius: 30px;
-    clip-path: circle(50%);
 }
 
 .img-container, .form-content {
@@ -26,7 +25,7 @@ position: absolute;
     width: 900px;
     height: 350px;
     left: -490px;
-    /* background: linear-gradient(169.05deg, #84a0da 8.1%, rgba(16, 134, 193, 0.359375) 74.2%, rgba(130, 239, 255, 0) 95.03%, #303132 95.03%); */
+    background: linear-gradient(169.05deg, #84a0da 8.1%, rgba(16, 134, 193, 0.359375) 74.2%, rgba(130, 239, 255, 0) 95.03%, #303132 95.03%);
     opacity: 0.2;
     transform: rotate(-60deg);
     border-radius: 0px 100px 0px 1000px;
@@ -38,6 +37,11 @@ position: absolute;
 
 .form-content {
     padding: 4%;
+    overflow: auto !important;
+}
+
+.form-content-login {
+    padding: 2% 8% 0% 0%;
     overflow: auto !important;
 }
 
@@ -123,6 +127,7 @@ p.text-alert {
 
 .register, .link-login {
     color: #4894FF;
+    margin-top: 8%;
 }
 
 label#demo-row-radio-buttons-group-label {

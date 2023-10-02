@@ -1,4 +1,4 @@
-import Img from '../../assets/giphy.gif';
+import Img from '../../assets/estudantes.jpg';
 import "./Login.css";
 
 const ImgLogin = () => {
