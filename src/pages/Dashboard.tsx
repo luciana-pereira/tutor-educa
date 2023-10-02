@@ -118,11 +118,11 @@ const Dashboard = () => {
       <div className="container">
         <div>
           <Stack className="boxAvatar" direction="row" spacing={2}>
-            <Avatar
+            {/* <Avatar
               alt="Remy Sharp"
               src="https://www.essence.com/wp-content/uploads/2016/05/1463680384/Scervino%20bbt%20S14%20002.jpg?width=600"
               sx={{ width: 150, height: 150, marginTop: "20px", border: "3px solid #4894ff" }}
-            />
+            /> */}
           </Stack>
           {userData ?
             (userData?.type === 'tutor') ? (
@@ -171,7 +171,7 @@ const Dashboard = () => {
             <Box
               className="boxContent"
             >
-              <h6 className="titleDashboard">Atividade física</h6>
+              <h6 className="titleDashboard">Atividade </h6>
               <p></p>
               <br />
             </Box>
@@ -194,7 +194,7 @@ const Dashboard = () => {
             <Box
               className="boxContent"
             >
-              <h6 className="titleDashboard">Atividade física</h6>
+              <h6 className="titleDashboard">Atividade</h6>
               <p></p>
               <br />
             </Box>
