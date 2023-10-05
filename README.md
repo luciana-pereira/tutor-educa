@@ -1,8 +1,8 @@
 
-# Mentor Educa
+# Tutor Educa
 
 <div align="center" >
-<a href="https://tutor-educa.vercel.app/"><img width="45%" src="https://github.com/luciana-pereira/tutor-educa/assets/37550557/41ec906a-de96-433c-88a9-0dc95d1fa8a8" title="logo Mentor Educa" /></a> 
+<a href="https://tutor-educa.vercel.app/"><img width="45%" src="https://github.com/luciana-pereira/tutor-educa/assets/37550557/c31e9d43-ed59-489e-a2a7-11a2502901ed" title="logo Mentor Educa" /></a> 
 </div>
 
 `Hack for Change - FIAP + Alura`
@@ -46,13 +46,13 @@ Para a construção da aplicação foi utilizado o software Visual Studio Code c
 Para iniciar, é necessário ter instalado na máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Yarn](https://classic.yarnpkg.com/lang/en/docs/) e um editor de texto como o [VSCode](https://code.visualstudio.com/).
 
-**Clone o repositório:**
-$ git clone <https://github.com/luciana-pereira/monitor-educa.git>
+**Clone o repositório:**</br>
+$ git clone <https://github.com/luciana-pereira/tutor-educa.git>
 
-**Acesse a pasta do projeto no terminal:**
+**Acesse a pasta do projeto no terminal:**</br>
 $ cd monitor-educa
 
-**Instale as dependências do projeto:**
+**Instale as dependências do projeto:**</br>
 $ yarn 
 
 
