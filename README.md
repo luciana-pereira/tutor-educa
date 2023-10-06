@@ -80,7 +80,7 @@ Esta aplicação foi desenvolvida por:
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/matheus-poro" target="_blank">
+      <a href="https://github.com/janduymonroe" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/66971685?v=4" width="100px;" alt="Foto de Janduy Monroe no GitHub"/><br>
         <sub>
           <b>Janduy Monroe</b>
