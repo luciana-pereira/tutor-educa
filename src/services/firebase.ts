@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getEnvironment } from "../utils/ts/helpers";
 // import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { collection, getFirestore } from "firebase/firestore";
 
 // const apiKey = getEnvironment().API_KEY;
 // const authDomain = getEnvironment().AUTH_DOMAIN;
@@ -25,3 +27,10 @@ export const initFirebase = () => {
   // const analytics = getAnalytics(app);
   return app;
 };
+
+const app = initFirebase();
+
+export const firebaseAuth = getAuth(app);
+export const firebaseDB = getFirestore(app);
+export const usersRef = collection(firebaseDB, "users");
+export const meetingsRef = collection(firebaseDB, "meetings");

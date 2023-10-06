@@ -2,13 +2,19 @@ import { useState, forwardRef } from "react";
 import ImgLogin from "./ImgLogin";
 import Input from "../Forms/Input/Input";
 import Button from "../Forms/Button/Button";
-import { Link, Navigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { initFirebase } from '../../services/firebase';
+import { firebaseAuth, firebaseDB, initFirebase, usersRef } from '../../services/firebase';
+import animation from "../../assets/animation.gif";
 import "./Login.css";
+import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPanel, EuiProvider, EuiSpacer, EuiText, EuiTextColor } from "@elastic/eui";
+import { useAppDispatch } from "../../store/hooks";
+import { collection, query, where, addDoc, getDocs } from "firebase/firestore";
+import { setUser } from "../../store/slices/AuthSlice";
+
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -23,6 +29,9 @@ const LoginForm = () => {
 
     const app = initFirebase();
     const auth = getAuth(app);
+
+    // const navigate = useNavigate();
+    // const dispatch = useAppDispatch();
 
     const {
         control,
@@ -41,6 +50,31 @@ const LoginForm = () => {
         setOpen(false);
     };
 
+    // onAuthStateChanged(firebaseAuth, (currentUser) => {
+    //     if (currentUser) navigate("/");
+    // });
+
+    // const login = async () => {
+    //     const provider = new GoogleAuthProvider();
+    //     const {
+    //         user: { displayName, email, uid },
+    //     } = await signInWithPopup(firebaseAuth, provider);
+
+    //     if (email) {
+    //         const firestoreQuery = query(usersRef, where("uid", "==", uid));
+    //         const fetchedUser = await getDocs(firestoreQuery);
+    //         if (fetchedUser.docs.length === 0) {
+    //             await addDoc(collection(firebaseDB, "users"), {
+    //                 uid,
+    //                 name: displayName,
+    //                 email,
+    //             });
+    //         }
+    //         dispatch(setUser({ uid, email: email!, name: displayName! }));
+    //         navigate("/");
+    //     }
+    // };
+
     const onSubmit = async (formData: Object) => {
 
         signInWithEmailAndPassword(auth, email, password)
@@ -52,7 +86,7 @@ const LoginForm = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // console.log("Error", errorCode, errorMessage);
+                console.error("Error", errorCode, errorMessage);
                 setOpen(true);
             });
     }
@@ -82,14 +116,22 @@ const LoginForm = () => {
     return (
         <section className="form-container">
             <div className="effect"></div>
-            <ImgLogin />
+            <EuiFlexItem>
+                <EuiImage src={animation} alt="logo" />
+            </EuiFlexItem>
             <div className="form-content-login">
                 {isNavigate && (
                     <Navigate to="dashboard" replace={true} />
                 )}
                 <div className="form">
-                    <h2 className="form-title">Tutor Educa</h2>
-                    <p>Olá, seja bem vindo de volta, realize o login para iniciar.</p>
+                    <EuiText textAlign="center" grow={false}>
+                        <h2>
+                            <EuiTextColor color="#0b5cff">Tutor Educa</EuiTextColor>
+                        </h2>
+                        <h6>
+                            <EuiTextColor>Compartilhando conhecimento</EuiTextColor>
+                        </h6>
+                    </EuiText>
                     <form className="form" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                         <Controller
                             name='email'
