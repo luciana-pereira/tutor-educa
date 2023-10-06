@@ -2,7 +2,9 @@
 # Tutor Educa
 
 <div align="center" >
-<a href="https://tutor-educa.vercel.app/"><img width="45%" src="https://github.com/luciana-pereira/tutor-educa/assets/37550557/c31e9d43-ed59-489e-a2a7-11a2502901ed" title="logo Mentor Educa" /></a> 
+  <a href="https://tutor-educa.vercel.app/">
+    <img width="942" alt="image" src="https://github.com/luciana-pereira/tutor-educa/assets/37550557/8d1c7891-1d92-4fe4-8921-c704114c4812">
+  </a> 
 </div>
 
 `Hack for Change - FIAP + Alura`
